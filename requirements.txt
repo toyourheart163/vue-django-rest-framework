@@ -14,4 +14,4 @@ faker
 django-debug-toolbar
 django==2.2.6
 
-# httpie 
+httpie 
