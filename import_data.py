@@ -27,19 +27,22 @@ User = get_user_model()
 if not Role.objects.first():
     roles = ['admin', 'editor']
     names = ['bar', 'foo']
-    for role, username in zip(roles, names):
-        Role.objects.create(name=role)
+    for _role, username in zip(roles, names):
+        role = Role.objects.create(name=_role)
+        print('create new role ' + _role)
         if not User.objects.first():
             user = role.userprofile_set.create(username=username)
             if username == 'bar':
                 user.is_superuser = True
                 user.is_staff = True
-                user.save()
+            user.set_password('ok')
+            user.save()
     print('批量新建角色完成')
 
 if not User.objects.first():
     user = User(username='bar')
-    user.save()
+    user.is_superuser = True
+    user.is_staff = True
     user.set_password('ok')
     user.save()
     print('生成一个用户')
