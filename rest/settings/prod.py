@@ -30,6 +30,13 @@ DATABASES = {
 
 DEBUG = bool(os.getenv('DJANGO_DEBUG', ''))
 
+if not DEBUG:
+    '''remove debug_toolbar'''
+    try:
+        INSTALLED_APPS.remove('debug_toolbar')
+    except ValueError:
+        pass
+
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', SECRET_KEY)
 
 # Set to your Domain here (eg. 'django-vue-template-demo.herokuapp.com')
