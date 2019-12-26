@@ -31,7 +31,7 @@ if not Role.objects.first():
         Role.objects.create(name=role)
         if not User.objects.first():
             user = role.userprofile_set.create(username=username)
-            if username = 'bar':
+            if username == 'bar':
                 user.is_superuser = True
                 user.is_staff = True
                 user.save()
