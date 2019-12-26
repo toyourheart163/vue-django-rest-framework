@@ -1,11 +1,11 @@
 django
 djangorestframework
-rest_framework_swagger
-rest_framework_jwt
-django_filters
-url_filter
-django_cors_headers
-graphene_django
+django-rest-swagger
+djangorestframework-jwt
+django-filter
+django-url-filter
+django-cors-headers
+graphene-django
 gunicorn
 whitenoise
 dj-database-url
