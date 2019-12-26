@@ -35,7 +35,7 @@ AUTH_USER_MODEL = 'user.UserProfile'
 # Application definition
 
 INSTALLED_APPS = [
-    'debug_toolbar',
+    # 'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
