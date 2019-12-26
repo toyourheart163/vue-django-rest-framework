@@ -34,6 +34,7 @@ if not DEBUG:
     '''remove debug_toolbar'''
     try:
         INSTALLED_APPS.remove('debug_toolbar')
+        MIDDLEWARE.remove('debug_toolbar.middleware.DebugToolbarMiddleware')
     except ValueError:
         pass
 

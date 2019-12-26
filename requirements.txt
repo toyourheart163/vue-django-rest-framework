@@ -11,6 +11,7 @@ dj-database-url
 psycopg2-binary
 requests
 faker
+django-debug-toolbar
 django==2.2.6
 
 # httpie 
