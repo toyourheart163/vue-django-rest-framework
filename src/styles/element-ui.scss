@@ -47,3 +47,16 @@
 .el-range-separator {
   box-sizing: content-box;
 }
+
+// for mobile phone
+@media only screen and (max-width:414px) {
+  .hidden-s-only {
+    display: none !important
+  }
+}
+
+@media only screen and (min-width:415px) {
+  .hidden-s-and-up {
+    display: none !important
+  }
+}

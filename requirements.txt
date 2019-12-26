@@ -1,0 +1,16 @@
+django
+djangorestframework
+rest_framework_swagger
+rest_framework_jwt
+django_filters
+url_filter
+django_cors_headers
+graphene_django
+gunicorn
+whitenoise
+dj-database-url
+psycopg2-binary
+requests
+faker
+
+# httpie 

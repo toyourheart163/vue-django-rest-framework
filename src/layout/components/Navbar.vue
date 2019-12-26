@@ -22,6 +22,12 @@
           <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
             <el-dropdown-item>Docs</el-dropdown-item>
           </a>
+          <a target="_blank" href="http://localhost:8000/docs/">
+            <el-dropdown-item>api Docs</el-dropdown-item>
+          </a>
+          <a target="_blank" href="http://localhost:8000/graphql">
+            <el-dropdown-item>graphql Docs</el-dropdown-item>
+          </a>
           <el-dropdown-item divided>
             <span style="display:block;" @click="logout">Log Out</span>
           </el-dropdown-item>

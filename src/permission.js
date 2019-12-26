@@ -8,7 +8,8 @@ import getPageTitle from '@/utils/get-page-title'
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
-const whiteList = ['/login'] // no redirect whitelist
+// const whiteList = ['/login']
+const blackList = ['/vadmin', '/dashboard'] // redirect blackList
 
 router.beforeEach(async(to, from, next) => {
   // start progress bar
@@ -32,7 +33,7 @@ router.beforeEach(async(to, from, next) => {
       } else {
         try {
           // get user info
-          await store.dispatch('user/getInfo')
+          await store.dispatch('user/getUserInfo')
 
           next()
         } catch (error) {
@@ -47,13 +48,11 @@ router.beforeEach(async(to, from, next) => {
   } else {
     /* has no token*/
 
-    if (whiteList.indexOf(to.path) !== -1) {
-      // in the free login whitelist, go directly
-      next()
-    } else {
-      // other pages that do not have permission to access are redirected to the login page.
+    if (blackList.indexOf(to.path) !== -1) {
       next(`/login?redirect=${to.path}`)
       NProgress.done()
+    } else {
+      next()
     }
   }
 })

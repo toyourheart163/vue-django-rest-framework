@@ -1,91 +1,142 @@
-# vue-admin-template
+# vue-django-rest-framework
 
-English | [简体中文](./README-zh.md)
+This is a example for an application using Vue and Django.
 
-> A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
+* 使用 Element UI 搭建前端模板
+* 后端使用 django-rest-framework 提供 api
+* swagger 前后端 api 对接文档
 
-**Live demo:** http://panjiachen.github.io/vue-admin-template
+## 已实现的功能
 
+* 三层评论
+* JWT 登陆
+* faker 模拟数据，比前端的Mock更强大
+* api操作，前端使用axios， 后端使用rest_framework
+* 标签云
+* Timeline
 
-**The current version is `v4.0+` build on `vue-cli`. If you want to use the old version , you can switch branch to [tag/3.11.0](https://github.com/PanJiaChen/vue-admin-template/tree/tag/3.11.0), it does not rely on `vue-cli`**
-
-## Build Setup
-
+推荐使用httpie替代curl操作api, 非常简单
 
 ```bash
-# clone the project
-git clone https://github.com/PanJiaChen/vue-admin-template.git
+http :8000/api/
+http -a bar:ok :8000/api/blogs/  # 获取需要登陆的数据
+http :8000/api/tags/ name=vue  # post 操作
+```
 
-# enter the project directory
-cd vue-admin-template
+[rest_framework](https://www.django-rest-framework.org)官网有很多好东西。文档也写得很好，注释了很多需要的东西。
 
-# install dependency
-npm install
+## 使用说明
 
-# develop
+Setup
+```
+$ npm install
+$ pip install -r requirements.txt
+$ python manage.py migrate
+```
+
+```
+$ python manage.py runserver
+```
+[`localhost:8000`](http://localhost:8000/)
+
+另一个终端窗口
+
+```
 npm run dev
 ```
+[`localhost:9528`](http://localhost:9528/)
 
-This will automatically open http://localhost:9528
+swagger 前后端 api 对接文档
+[docs](http://localhost:8000/docs/)
 
-## Build
-
-```bash
-# build for test environment
-npm run build:stage
-
-# build for production environment
-npm run build:prod
+```
+$ npm run build:prod
+$ python manage.py runserver
 ```
 
-## Advanced
-
 ```bash
-# preview the release environment effect
-npm run preview
-
-# preview the release environment effect + static resource analysis
-npm run preview -- --report
-
-# code format check
-npm run lint
-
-# code format check and auto fix
-npm run lint -- --fix
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser username=bar
+python manage.py changepassword bar  # 因为改写了 AUTH_USER_MODEL = 'user.UserProfile'
 ```
 
-Refer to [Documentation](https://panjiachen.github.io/vue-element-admin-site/guide/essentials/deploy.html) for more information
+## Deploy
 
-## Demo
+* Set `ALLOWED_HOSTS` on [`rest.settings.prod`](/rest/settings/prod.py)
 
-![demo](https://github.com/PanJiaChen/PanJiaChen.github.io/blob/master/images/demo.gif)
+### Heroku Server
 
-## Extra
+记得替换 `django-vue-template-demo`
+```
+$ heroku apps:create django-vue-template-demo
+$ heroku git:remote --app django-vue-template-demo
+$ heroku buildpacks:add --index 1 heroku/nodejs
+$ heroku buildpacks:add --index 2 heroku/python
+$ heroku addons:create heroku-postgresql:hobby-dev
+$ heroku config:set DJANGO_SETTINGS_MODULE=rest.settings.prod
+$ heroku config:set DJANGO_SECRET_KEY='...(your django SECRET_KEY value)...'
 
-If you want router permission && generate menu by user roles , you can use this branch [permission-control](https://github.com/PanJiaChen/vue-admin-template/tree/permission-control)
+$ git push heroku
+```
 
-For `typescript` version, you can use [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template) (Credits: [@Armour](https://github.com/Armour))
+### Includes
 
-## Related Project
+* Django
+* Django REST framework
+* Django Whitenoise, CDN Ready
+* Vue CLI 3
+* Vue Router
+* Vuex
+* Element UI
+* Gunicorn
+* Configuration for Heroku Deployment
+* rest_framework_swagger  # api 文档
+* rest_framework_jwt  # JWT json 认证
+* url_filter  # 使用 url 来搜索
+* corsheaders  # 跨域使用
+* debug_toolbar  # django debug 查看 ORM 过程
+* graphene_django  # 比纯 api 节省宽带
 
-- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
+### 文件夹目录
 
-- [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
+```
+LICENSE
+Pipfile
+Procfile
+README-backend.md  # 后端模板
+README-zh.md  # 前端模板
+README.md
+app.json
+apps
+babel.config.js
+build
+jest.config.js
+jsconfig.json
+manage.py
+mock
+package-lock.json
+package.json
+postcss.config.js
+public
+rest
+runtime.txt
+requirements.txt
+src
+tests
+todo.md
+vue.config.js
+why.md  # 一些思考过程
+```
 
-- [vue-typescript-admin-template](https://github.com/Armour/vue-typescript-admin-template)
+src/views/demo 用来练习
 
-- [awesome-project](https://github.com/PanJiaChen/vue-element-admin/issues/2312)
+[后端模板](https://github.com/gtalarico/django-vue-template)
+[README-backend](./README-backend.md)
 
-## Browsers support
+[前端模板](https://github.com/PanJiaChen/vue-admin-template)
+[README-zh](./README-zh.md)
 
-Modern browsers and Internet Explorer 10+.
+##### Heroku One Click Deploy
 
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
-| --------- | --------- | --------- | --------- |
-| IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions
-
-## License
-
-[MIT](https://github.com/PanJiaChen/vue-admin-template/blob/master/LICENSE) license.
-
-Copyright (c) 2017-present PanJiaChen
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/gtalarico/django-vue-template)
