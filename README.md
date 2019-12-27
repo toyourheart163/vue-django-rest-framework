@@ -106,7 +106,7 @@ $ git push heroku
 * Element UI
 * Gunicorn
 * Configuration for Heroku Deployment
-* rest_framework_swagger  # api 文档
+* drf-yasg  # api 文档
 * rest_framework_jwt  # JWT json 认证
 * url_filter  # 使用 url 来搜索
 * corsheaders  # 跨域使用
