@@ -73,7 +73,7 @@ export const constantRoutes = [
 
   blogRouter,
   demoRouter,
-
+  /*
   {
     path: '/example',
     component: Layout,
@@ -108,7 +108,7 @@ export const constantRoutes = [
       }
     ]
   },
-
+  */
   {
     path: '/nested',
     component: Layout,
