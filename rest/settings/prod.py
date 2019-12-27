@@ -28,7 +28,7 @@ DATABASES = {
 # SECURITY #
 ############
 
-DEBUG = bool(os.getenv('DJANGO_DEBUG', ''))
+#DEBUG = bool(os.getenv('DJANGO_DEBUG', ''))
 
 if not DEBUG:
     '''remove debug_toolbar'''
