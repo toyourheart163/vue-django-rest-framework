@@ -46,7 +46,7 @@ INSTALLED_APPS = [
 
     # third-party
     'rest_framework', # 在浏览器中显示，如果不需要可以去掉
-    'rest_framework_swagger',
+    'drf_yasg',
     'django_filters',
     'url_filter', # as name
     'rest_framework.authtoken',

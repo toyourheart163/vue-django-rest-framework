@@ -1,10 +1,3 @@
-djangorestframework
-django-rest-swagger
-djangorestframework-jwt
-django-filter
-django-url-filter
-django-cors-headers
-graphene-django
 gunicorn
 whitenoise==4.0
 dj-database-url
@@ -12,6 +5,13 @@ psycopg2-binary
 requests
 faker
 django-debug-toolbar
+djangorestframework
+djangorestframework-jwt
+django-filter
+django-url-filter
+django-cors-headers
+graphene-django
+drf-yasg
 django==2.2.6
 
 httpie 
