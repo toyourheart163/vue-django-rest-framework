@@ -1,5 +1,8 @@
 # vue-django-rest-framework
 
+[项目地址](https://github.com/toyourheart163/vue-django-rest-framework)
+[在线demo](https://vue-django-rest-framework.herokuapp.com)
+
 This is a example for an application using Vue and Django.
 
 * 使用 Element UI 搭建前端模板
@@ -14,24 +17,21 @@ This is a example for an application using Vue and Django.
 * api操作，前端使用axios， 后端使用rest_framework
 * 标签云
 * Timeline
-
-推荐使用httpie替代curl操作api, 非常简单
-
-```bash
-http :8000/api/
-http -a bar:ok :8000/api/blogs/  # 获取需要登陆的数据
-http :8000/api/tags/ name=vue  # post 操作
-```
-
-[rest_framework](https://www.django-rest-framework.org)官网有很多好东西。文档也写得很好，注释了很多需要的东西。
+* 首页3D满屏落花效果，欣赏一下尽快关闭，因为还有BUG，从别处移植的。
 
 ## 使用说明
+
+```bash
+git clone https://github.com/toyourheart163/vue-django-rest-framework
+cd vue-django-rest-framework
+```
 
 Setup
 ```
 $ npm install
 $ pip install -r requirements.txt
 $ python manage.py migrate
+$ python import_data.py  # 生成faker数据
 ```
 
 ```
@@ -58,8 +58,23 @@ $ python manage.py runserver
 python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser username=bar
-python manage.py changepassword bar  # 因为改写了 AUTH_USER_MODEL = 'user.UserProfile'
+python manage.py changepassword bar  # 修改密码，因为改写了 AUTH_USER_MODEL = 'user.UserProfile'
 ```
+
+推荐使用httpie替代curl操作api, 非常简单
+
+安装
+```bash
+pip install httpie
+```
+
+```bash
+http :8000/api/
+http -a bar:ok :8000/api/blogs/  # 获取需要登陆的数据
+http :8000/api/tags/ name=vue  # post 操作
+```
+
+[rest_framework](https://www.django-rest-framework.org)官网有很多好东西。文档也写得很好，注释了很多需要的东西。
 
 ## Deploy
 
@@ -139,4 +154,4 @@ src/views/demo 用来练习
 
 ##### Heroku One Click Deploy
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/gtalarico/django-vue-template)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/toyourheart163/vue-django-rest-framework)
