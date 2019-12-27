@@ -58,8 +58,8 @@ if not Category.objects.first():
 # 批量新建标签
 tags = [
     'vue', 'django', 'rest_framework',
-    'axios', 'vuex', 'element UI',
-    'vue router', 'JWT'
+    'axios', 'vuex', 'elementUI',
+    'vue-router', 'JWT'
 ]
 
 if not Tag.objects.first():
