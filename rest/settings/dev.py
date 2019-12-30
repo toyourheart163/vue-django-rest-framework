@@ -92,7 +92,15 @@ REST_FRAMEWORK = {
         'url_filter.integrations.drf.DjangoFilterBackend',
     ],
     'ORDERING_PARAM': 'o',
-    'SEARCH_PARAM': 'q'
+    'SEARCH_PARAM': 'q',
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',   #未登陆用户
+        'rest_framework.throttling.UserRateThrottle'    #登陆用户
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '300/minute',                   #每分钟可以请求两次
+        'user': '5000/minute'                    #每分钟可以请求五次
+    }
 }
 
 SWAGGER_SETTINGS = {
