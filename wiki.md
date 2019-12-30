@@ -198,8 +198,26 @@ router.register('comments', CommentViewSet)
 router.register('code', SmsCodeViewset, base_name='code')  # 模拟短信注册
 ```
 
+### graphql 使用
+
 * rest/schema.py
 graphql 接口, 节省宽带的api
+
+[`localhost:8000/graphql`](http://localhost:8000/graphql)
+
+```javascript
+// 复制到文本框，然后点运行
+{
+  users {
+    id,
+    username
+  }
+}
+```
+
+### swagger 前后端 api 对接文档
+
+[docs](http://localhost:8000/docs/)
 
 * apps/blog/viewsets.py
 
@@ -251,19 +269,6 @@ tag.blog_set.create(
 )
 ```
 
-### graphql 使用
-[`localhost:8000/graphql`](http://localhost:8000/graphql)
-
-```javascript
-// 复制到文本框，然后点运行
-{
-  users {
-    id,
-    username
-  }
-}
-```
-
 ### 部署到heroku前，要在本地测试一下。
 
 如果不想在本地使用`postgrasql`，修改一下DATABASES，部署的时候记得修改回来。。。
@@ -278,6 +283,8 @@ DATABASES = {
     }
 }
 ```
+
+本地预览
 
 ```bash
 heroku local

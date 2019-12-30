@@ -1,5 +1,6 @@
 <template>
   <div>
+    <github-corner style="position: absolute; top: 60px; border: 0; right: 0;" />
     <el-container>
       <el-header class="hidden-s-only">
         <el-row>
@@ -16,7 +17,7 @@
               <el-submenu index="2" style="float: right">
                 <template slot="title">我的工作台</template>
                 <el-menu-item index="2-1">
-                  <a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/">Github</a>
+                  <a target="_blank" href="https://github.com/toyourheart163/vue-django-rest-framework">Github</a>
                 </el-menu-item>
                 <el-menu-item index="2-2">
                   <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">Docs</a>
@@ -57,7 +58,7 @@
         <el-submenu index="2">
           <template slot="title">我的工作台</template>
           <el-menu-item index="2-1">
-            <a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/">Github</a>
+            <a target="_blank" href="https://github.com/toyourheart163/vue-django-rest-framework">Github</a>
           </el-menu-item>
           <el-menu-item index="2-2">
             <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">Docs</a>
@@ -81,9 +82,10 @@
 import 'element-ui/lib/theme-chalk/display.css'
 import Slide from './vside'
 import Screenfull from '@/components/Screenfull/index'
+import GithubCorner from '@/components/GithubCorner/index'
 
 export default {
-  components: { Slide, Screenfull },
+  components: { Slide, Screenfull, GithubCorner },
   data() {
     return {
       activeIndex: '3',

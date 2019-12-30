@@ -5,7 +5,6 @@ from datetime import datetime, timedelta
 
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from rest_framework.decorators import list_route
 from django.contrib.auth import get_user_model
 
 from .models import VerifyCode, Role
